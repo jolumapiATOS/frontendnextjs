@@ -5,12 +5,12 @@ const  About = () => {
         <>
             <Head>
             <title> UPgrade | Jose Luis Matias Pineda  </title>
-            <meta name='keywords' content='Tech Services' />
+            <meta name='keywords' content='Tech Services'/>
             </Head>
             <div>
                 <h1>About me</h1>
                 <p> 
-                    i consider myself selftaught although that is not completly accurate. I've taken several courses throughout
+                    i consider myself selftaught although that is not completly accurate. Ive taken several courses throughout
                     my life as a developer. The first thing i developed was an app for managing condos. The second one was for conducting
                     promptly diagnostics. 
                 </p>
@@ -28,7 +28,7 @@ const  About = () => {
                     <li> TypeScript </li>
                 </ul>
                 <p>
-                    - Jose Luis Matias Pineda -
+                  Jose Luis Matias Pineda
                 </p>
             </div>
         </>
