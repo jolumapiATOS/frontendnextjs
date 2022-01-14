@@ -8,10 +8,28 @@ const  About = () => {
             <meta name='keywords' content='Tech Services' />
             </Head>
             <div>
-                <h1>About</h1>
-                <p> Eu cupidatat do do occaecat sunt quis. Ea fugiat qui ullamco exercitation mollit aliqua eiusmod ipsum. Nulla ad exercitation enim dolore 
-                    Lorem veniam exercitation ut dolore do sunt consequat sint. Id incididunt eiusmod id in qui. Sint est commodo dolore minim cillum enim aute eu 
-                    in laborum nulla et qui. Sunt sint sunt labore commodo sint aliquip magna anim officia. Elit enim amet ut pariatur esse id Lorem. </p>
+                <h1>About me</h1>
+                <p> 
+                    i consider myself selftaught although that is not completly accurate. I've taken several courses throughout
+                    my life as a developer. The first thing i developed was an app for managing condos. The second one was for conducting
+                    promptly diagnostics. 
+                </p>
+                <strong>Back End Technologies</strong>
+                <ul>
+                    <li> Ruby on Rails </li>
+                    <li> JavaScript/ NodeJS / Express </li>
+                    <li> Java </li>
+                </ul>
+                <strong>Front End Technologies</strong>
+                <ul>
+                    <li> JavaScript / Vanilla / Jquery / ES6 / Promises / Async </li>
+                    <li> React  </li>
+                    <li> Next JS </li>
+                    <li> TypeScript </li>
+                </ul>
+                <p>
+                    - Jose Luis Matias Pineda -
+                </p>
             </div>
         </>
      );

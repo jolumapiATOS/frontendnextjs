@@ -1,7 +1,8 @@
 const Footer = () => {
     return ( 
         <footer>
-            <h1>Upgrade | Project</h1>
+            <h1> UPgrade | Front End </h1>
+            <p> Welcome to the jungle </p>
         </footer>
      );
 }
