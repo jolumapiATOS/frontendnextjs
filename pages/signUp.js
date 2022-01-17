@@ -8,6 +8,9 @@ const SignUp = () => {
         e.preventDefault();
         const res = await fetch('https://node-server-for-upgrade.herokuapp.com/user/new', {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ name: name, accountGitHub: account })
         });
         const data = await res.json();
