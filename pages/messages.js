@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from '../styles/MyOwn.module.css';
 
 
 
@@ -21,7 +22,7 @@ const ListAllMessages = () => {
         <div>
             <h1>Messages</h1>
             <div>
-                { messages && messages.map( m => { return <div key={m._id + 1} > <p key={m._id} > { m.message } </p> </div> }) }
+                { messages && messages.map( m => { return <div className={ styles.container } key={m._id + 1} > <p key={m._id} > { m.message } </p> </div> }) }
             </div>
         </div>
      );

@@ -1,7 +1,7 @@
 const Footer = () => {
     return ( 
         <footer>
-            <h1> UPgrade | Front End </h1>
+            <h1 data-testid="title">UPgrade | Front End</h1>
             <p> Welcome to the jungle </p>
         </footer>
      );

@@ -7,7 +7,7 @@ const Navbar = () => {
             <div className="logo">
                 <Image height={120} width={200} id="logo-nav" alt="nextJS logo" src='/logo.svg'  />
             </div>
-            <Link href="/"><a>Home</a></Link>
+            <Link href="/"><a data-testid="link-home">Home</a></Link>
             <Link href="/about"><a>About Me</a></Link>
             <Link href="/signUp"><a>Sign Up</a></Link>
             <Link href="/newMessage"><a>New message</a></Link>
