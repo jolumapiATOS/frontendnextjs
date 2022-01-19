@@ -9,7 +9,7 @@ const CreateNewMessage = () => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                Auth: window.localStorage.Auth
+                Auth: self.localStorage.Auth
             },
             body: JSON.stringify({messageUser})
         }).catch( e => { console.log(e) } )

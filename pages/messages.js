@@ -11,7 +11,7 @@ const ListAllMessages = () => {
         const res = await fetch('https://node-server-for-upgrade.herokuapp.com/getMyMessages', {
             headers: {
                 'Content-Type': 'application/json',
-                Auth: window.localStorage.Auth
+                Auth: self.localStorage.Auth
             }
         })
          const data = await res.json();
