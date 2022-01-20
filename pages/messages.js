@@ -7,17 +7,22 @@ const ListAllMessages = () => {
 
     const [messages, setMessages] = useState(null);
 
-    useEffect( async() => {
-        const res = await fetch('https://node-server-for-upgrade.herokuapp.com/getMyMessages', {
+    useEffect(()=> {
+        const abortCont = new AbortController();
+        fetch('https://node-server-for-upgrade.herokuapp.com/getMyMessages', {
+            signal: abortCont.signal,
             headers: {
                 'Content-Type': 'application/json',
                 Auth: self.localStorage.Auth
             }
-        })
-         const data = await res.json();
-         setMessages(data.messages);
-     }, []);
-    
+        }).then(response => {
+            return response.json();
+        }).then( data => {
+            setMessages(data.messages);
+        }).catch(e => { console.log(e) })
+        return () => abortCont.abort();
+    }, [])
+
     return ( 
         <div>
             <h1>Messages</h1>
