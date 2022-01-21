@@ -16,3 +16,20 @@
   color: white;
   text-align: center;
 }
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 20px 0;
+  height: 120px;
+  border-radius: 12px;
+  padding: 15px;
+  border-top: 50px solid #6C63FF;
+  position: relative;
+}
+
+.messageDate {
+  position: absolute;
+  top: -50px;
+  right: 10px;
+  color: white;
+}

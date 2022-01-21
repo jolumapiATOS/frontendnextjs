@@ -19,7 +19,7 @@ const CreateNewMessage = () => {
 
     return ( 
         <div>
-            <h1>Create a new message</h1>
+            <h1>New advancement</h1>
             <input value={messageUser} onChange={ (e) => { setMessage( e.target.value ) }} type="text" />
 
             <h1>Message:</h1>

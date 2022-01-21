@@ -10,8 +10,8 @@ const Navbar = () => {
             <Link href="/"><a data-testid="link-home">Home</a></Link>
             <Link href="/about"><a>About Me</a></Link>
             <Link href="/signUp"><a>Sign Up</a></Link>
-            <Link href="/newMessage"><a>New message</a></Link>
-            <Link href="/messages"><a>All messages</a></Link>
+            <Link href="/newMessage"><a>New Advancement</a></Link>
+            <Link href="/messages"><a>All advancements</a></Link>
         </nav>
      );
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from '../styles/MyOwn.module.css';
 import Cardmessage from "../components/CardMessage";
 
 
@@ -25,7 +24,7 @@ const ListAllMessages = () => {
 
     return ( 
         <div>
-            <h1>Messages</h1>
+            <h1>Advancements</h1>
             <div>
                 { messages && messages.map( m => { return <Cardmessage key={m._id} message={ m } />   }) }
             </div>

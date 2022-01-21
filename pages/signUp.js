@@ -13,15 +13,20 @@ const SignUp = () => {
             },
             body: JSON.stringify({ name: name, accountGitHub: account })
         });
-        const data = await res.json();
-        console.log(data);
-        window.localStorage.Auth = data.jwt;
+        if( res.status === 200 ) {
+            alert("Your account has been succesfully created!");
+            const data = await res.json();
+            window.localStorage.Auth = data.jwt;
+        } else {
+
+        }
     }
 
 
     return ( 
         <>
             <h1>Welcome!</h1>
+            <p>Please enter your data below:</p>
             <input value={ name } onChange={ (e) => { setName( e.target.value ) } } placeholder="Enter your full name" type="text" name="" id="" />
             { name }
             <br />
