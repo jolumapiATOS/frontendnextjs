@@ -10,11 +10,16 @@ const NavbarForApp = () => {
     const [auth, setAuth] = useState(null);
     useEffect(() => {
        if(window.localStorage.Auth){
-           setAuth(true)
+           setAuth(localStorage.getItem('Auth'))
        } else {
            setAuth(null)
        }
-    }, []);
+    }, [auth]);
+
+    const handleLogOut = () => {
+        window.localStorage.removeItem('Auth');
+        setAuth(null);
+    }
 
     return ( 
         <>
@@ -47,9 +52,9 @@ const NavbarForApp = () => {
                             { auth && <Link href="/messages">
                                 <a className={ styles.btnAll }> All entries </a>
                             </Link> } 
-                            { auth && <Link href="/">
+                            { auth && <a onClick={ () => {  handleLogOut()  } } >
                                 <a className={ styles.btnOut }> Log Out </a>
-                            </Link>}
+                            </a>}
                         </Nav>
                     </Offcanvas.Body>
                     </Navbar.Offcanvas>

@@ -16,7 +16,8 @@ const SignUp = () => {
         if( res.status === 200 ) {
             alert("Your account has been succesfully created!");
             const data = await res.json();
-            window.localStorage.Auth = data.jwt;
+            window.localStorage.setItem("Auth", data.jwt);
+            location.replace("/");
         } else {
 
         }

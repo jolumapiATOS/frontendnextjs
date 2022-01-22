@@ -17,7 +17,7 @@ const SignUp = () => {
         if( res.status === 200 ) {
             alert("You have successfully logged in!");
             const data = await res.json();
-            window.localStorage.Auth = data.jwt;
+            window.localStorage.setItem("Auth", data.jwt);
         } else {
 
         }
