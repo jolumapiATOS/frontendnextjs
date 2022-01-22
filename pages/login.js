@@ -1,8 +1,9 @@
 import { useState } from "react";
-import styles from "../styles/Home.module.css"
 import Image from 'next/image';
+import Swal from 'sweetalert2'
 
-const SignUp = () => {
+
+const Login = () => {
     const [name, setName ] = useState('');
     const [ account, setAccount ] = useState('');
 
@@ -15,13 +16,21 @@ const SignUp = () => {
             },
             body: JSON.stringify({ name: name, password: account })
         });
-        if( res.status === 200 ) {
-            alert("You have successfully logged in!");
-            const data = await res.json();
-            window.localStorage.setItem("Auth", data.jwt);
-            location.replace("/");
+        const data = await res.json();
+        if( data.notification === "User not found" ) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Not valid credentials please try again!'
+              })
         } else {
-
+            window.localStorage.setItem("Auth", data.jwt);
+            Swal.fire(
+                'Successfully logged in!',
+                'You clicked the button!',
+                'success'
+              )
+            location.replace('/')
         }
     }
 
@@ -45,4 +54,4 @@ const SignUp = () => {
      );
 }
  
-export default SignUp;
+export default Login;

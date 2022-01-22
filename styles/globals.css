@@ -8,6 +8,14 @@
     outline: 2px solid #6C63FF;
 }
 
+#navbar-logo-mine {
+  color: #6C63FF;
+}
+
+#daily-logo {
+  color: #333;
+}
+
 #navbar-canvas-off-mine {
   width: 250px;
 }

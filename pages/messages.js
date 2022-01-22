@@ -5,9 +5,11 @@ import Cardmessage from "../components/CardMessage";
 const ListAllMessages = () => {
 
     const [messages, setMessages] = useState(null);
+    const [ loading, setLoading ] = useState(false);
 
     useEffect(()=> {
         const abortCont = new AbortController();
+        setLoading(true);
         fetch('https://node-server-for-upgrade.herokuapp.com/getMyMessages', {
             signal: abortCont.signal,
             headers: {
@@ -17,14 +19,16 @@ const ListAllMessages = () => {
         }).then(response => {
             return response.json();
         }).then( data => {
+            setLoading(false);
             setMessages(data.messages);
         }).catch(e => { console.log(e) })
+            setLoading(false)
         return () => abortCont.abort();
     }, [])
 
     return ( 
         <div className="p-4">
-            <h1>Advancements</h1>
+            { loading ? <h1>Loading....</h1> : <h1>Advancements</h1>}
             <div>
                 { messages && messages.map( m => { return <Cardmessage key={m._id} message={ m } />   }) }
             </div>

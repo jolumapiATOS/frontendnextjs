@@ -26,7 +26,7 @@ const NavbarForApp = () => {
         <>
             <Navbar bg="light" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand href="/">UPgrade | Daily </Navbar.Brand>
+                    <Navbar.Brand id="navbar-logo-mine" href="/">UPgrade | <strong id="daily-logo">Daily</strong>  </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
