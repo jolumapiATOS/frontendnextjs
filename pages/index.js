@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className={styles.title}> UPgrade | Frontend </h1>
         <p>
             The purpose of this app is for you to give daily feedback on all of your
-            projects and daily advancements. Use it wisely and enjoy it. Purposely created for you guys!
+            projects and daily advancements. Use it wisely and enjoy it. This app was created for you guys!
             
         </p>
         <h6>Loosely coupled architecture</h6>

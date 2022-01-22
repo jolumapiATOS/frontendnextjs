@@ -19,6 +19,7 @@ const NavbarForApp = () => {
     const handleLogOut = () => {
         window.localStorage.removeItem('Auth');
         setAuth(null);
+        location.replace("/");
     }
 
     return ( 
