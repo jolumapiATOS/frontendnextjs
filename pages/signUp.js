@@ -29,7 +29,7 @@ const SignUp = () => {
         <div className="p-4">
             <h1 className="text-center">Welcome!</h1>
             <div id="img-logo">
-                <Image alt="logo-enterprise" src="/appForm.svg" height={200} width={200} ></Image>
+                <Image src="/logo-fom2.svg" height={200} width={200} alt="logo-enterprise" ></Image>
             </div>
             <div className="container-centered">
                 <input value={ name } onChange={ (e) => { setName( e.target.value ) } } placeholder="Enter your full name" type="text" name="" id="" />
