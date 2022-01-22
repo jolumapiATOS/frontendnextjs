@@ -11,11 +11,62 @@
   width: 150px;
   padding: 8px 0;
   margin: 20px auto;
-  background: #4979ff;
+  background: #6C63FF;
   border-radius: 4px;
   color: white;
   text-align: center;
+  text-decoration: none;
 }
+
+.btnLog {
+  display: block;
+  width: 150px;
+  padding: 8px 0;
+  margin: 20px auto;
+  background: #7dff49;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btnAll {
+  display: block;
+  width: 100%;
+  padding: 8px 0px;
+  margin: 2px auto;
+  background: #6C63FF;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btnOut {
+  display: block;
+  width: 100%;
+  padding: 8px 0px;
+  margin: 2px auto;
+  background: #DB2B39;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btnNew {
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  padding: 20px 0px;
+  margin: 2px auto;
+  background: #0cce6b;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
 
 .container {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -29,7 +80,7 @@
 
 .messageDate {
   position: absolute;
-  top: -50px;
+  top: -40px;
   right: 10px;
   color: white;
 }

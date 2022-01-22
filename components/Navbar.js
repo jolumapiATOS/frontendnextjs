@@ -1,19 +1,63 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Container } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from "react-bootstrap";
+import { useState, useEffect } from 'react'
 
-const Navbar = () => {
+import styles from '../styles/Home.module.css'
+
+const NavbarForApp = () => {
+    const [auth, setAuth] = useState(null);
+    useEffect(() => {
+       if(window.localStorage.Auth){
+           setAuth(true)
+       } else {
+           setAuth(null)
+       }
+    }, []);
+
     return ( 
-        <nav>
-            <div className="logo">
-                <Image height={120} width={200} id="logo-nav" alt="nextJS logo" src='/logo.svg'  />
-            </div>
-            <Link href="/"><a data-testid="link-home">Home</a></Link>
-            <Link href="/about"><a>About Me</a></Link>
-            <Link href="/signUp"><a>Sign Up</a></Link>
-            <Link href="/newMessage"><a>New Advancement</a></Link>
-            <Link href="/messages"><a>All advancements</a></Link>
-        </nav>
+        <>
+            <Navbar bg="light" expand={false}>
+                <Container fluid>
+                    <Navbar.Brand href="/">UPgrade | Daily Advancements</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+                    <Navbar.Offcanvas
+                    id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel"
+                    placement="end"
+                    >
+                    <Offcanvas.Header closeButton>
+                        <Offcanvas.Title id="offcanvasNavbarLabel">Actions</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <Nav className="justify-content-end flex-grow-1">
+                            { auth && <Link href="/newMessage">
+                                <a className={ styles.btnNew }> New + </a>
+                            </Link>}
+                            { auth && <Link href="/">
+                                <a className={ styles.btnAll }> Home </a>
+                            </Link>}
+                            { !auth && <Link href="/">
+                                <a className={ styles.btnAll }> Login </a>
+                            </Link>}
+                            { !auth && <Link href="/">
+                                <a className={ styles.btnAll }> Sign Up </a>
+                            </Link>}
+                            { auth && <Link href="/messages">
+                                <a className={ styles.btnAll }> All entries </a>
+                            </Link> } 
+                            { auth && <Link href="/">
+                                <a className={ styles.btnOut }> Log Out </a>
+                            </Link>}
+                        </Nav>
+                    </Offcanvas.Body>
+                    </Navbar.Offcanvas>
+                </Container>
+            </Navbar>
+        </>
+        
      );
 }
  
-export default Navbar;
+export default NavbarForApp;
