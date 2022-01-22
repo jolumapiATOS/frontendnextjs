@@ -12,7 +12,7 @@ const SignUp = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: name, accountGitHub: account })
+            body: JSON.stringify({ name: name, password: account })
         });
         if( res.status === 200 ) {
             alert("Your account has been succesfully created!");

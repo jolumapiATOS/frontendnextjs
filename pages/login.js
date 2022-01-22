@@ -19,6 +19,7 @@ const SignUp = () => {
             alert("You have successfully logged in!");
             const data = await res.json();
             window.localStorage.setItem("Auth", data.jwt);
+            location.replace("/");
         } else {
 
         }
