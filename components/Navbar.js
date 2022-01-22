@@ -25,7 +25,7 @@ const NavbarForApp = () => {
         <>
             <Navbar bg="light" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand href="/">UPgrade | Daily Advancements</Navbar.Brand>
+                    <Navbar.Brand href="/">UPgrade | Daily </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     id="offcanvasNavbar"
@@ -43,10 +43,10 @@ const NavbarForApp = () => {
                             { auth && <Link href="/">
                                 <a className={ styles.btnAll }> Home </a>
                             </Link>}
-                            { !auth && <Link href="/">
+                            { !auth && <Link href="/login">
                                 <a className={ styles.btnAll }> Login </a>
                             </Link>}
-                            { !auth && <Link href="/">
+                            { !auth && <Link href="/signUp">
                                 <a className={ styles.btnAll }> Sign Up </a>
                             </Link>}
                             { auth && <Link href="/messages">

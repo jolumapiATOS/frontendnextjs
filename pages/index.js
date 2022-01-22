@@ -11,7 +11,7 @@ export default function Home() {
         <title> UPgrade | Daily   </title>
         <meta name='keywords' content='Tech Services' />
       </Head>
-      <div>
+      <div className="p-4">
       
         <h1 className={styles.title}> UPgrade | Frontend </h1>
         <p>
