@@ -3,10 +3,10 @@ import Image from "next/image";
 import { Container } from "react-bootstrap";
 import { Navbar, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from "react-bootstrap";
 import { useState, useEffect } from 'react'
-
 import styles from '../styles/Home.module.css'
 
 const NavbarForApp = () => {
+
     const [auth, setAuth] = useState(null);
     useEffect(() => {
        if(window.localStorage.Auth){
@@ -28,17 +28,17 @@ const NavbarForApp = () => {
                     <Navbar.Brand href="/">UPgrade | Daily </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
-                    id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel"
                     placement="end"
+                    id="navbar-canvas-off-mine"
                     >
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id="offcanvasNavbarLabel">Actions</Offcanvas.Title>
+                        <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1">
                             { auth && <Link href="/newMessage">
-                                <a className={ styles.btnNew }> New + </a>
+                                <a className={ styles.btnAll }> New + </a>
                             </Link>}
                             { auth && <Link href="/">
                                 <a className={ styles.btnAll }> Home </a>

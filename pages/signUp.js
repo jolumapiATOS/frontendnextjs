@@ -1,4 +1,5 @@
 import { useState} from "react";
+import Image from 'next/image';
 
 const SignUp = () => {
     const [name, setName ] = useState('');
@@ -25,17 +26,21 @@ const SignUp = () => {
 
 
     return ( 
-        <>
-            <h1>Welcome!</h1>
-            <p>Please enter your data below:</p>
-            <input value={ name } onChange={ (e) => { setName( e.target.value ) } } placeholder="Enter your full name" type="text" name="" id="" />
-            { name }
-            <br />
-            <input value={ account } onChange={ (e)=> { setAccount( e.target.value )  } } placeholder="Enter github account" type="text" name="" id="" />
-            { account }
-            <br />
-            <button onClick={ (e)=>{ sendInfo(e) }  } > Create! </button>
-        </>
+        <div className="p-4">
+            <h1 className="text-center">Welcome!</h1>
+            <div id="img-logo">
+                <Image alt="logo-enterprise" src="/appForm.svg" height={200} width={200} ></Image>
+            </div>
+            <div className="container-centered">
+                <input value={ name } onChange={ (e) => { setName( e.target.value ) } } placeholder="Enter your full name" type="text" name="" id="" />
+                { name }
+                <br />
+                <input value={ account } onChange={ (e)=> { setAccount( e.target.value )  } } placeholder="Enter password" type="text" name="" id="" />
+                { account }
+                <br />
+                <button className="btn btn-primary my-5" onClick={ (e)=>{ sendInfo(e) }  } > Create account </button>
+            </div>
+        </div>
      );
 }
  

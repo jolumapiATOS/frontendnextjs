@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -28,15 +29,9 @@ export default function Home() {
           <li>Express</li>
           <li>React</li>
         </ul>
-
-        <Link href="/login">
-            <a className={ styles.btn }> Log in </a>
-        </Link>
-
-        <Link href="/signUp">
-            <a className={ styles.btnLog }> Sign Up </a>
-        </Link>
-        
+        <div id="img-logo" >
+          <Image src="/logoApp.svg" height={200} width={200} alt="image-for-everyone" ></Image>
+        </div>
       </div>
     </>
   )

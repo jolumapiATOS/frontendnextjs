@@ -23,7 +23,7 @@ const ListAllMessages = () => {
     }, [])
 
     return ( 
-        <div>
+        <div className="p-4">
             <h1>Advancements</h1>
             <div>
                 { messages && messages.map( m => { return <Cardmessage key={m._id} message={ m } />   }) }

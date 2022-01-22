@@ -1,6 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
 
+#navbar-canvas-off-mine {
+  width: 250px;
+}
+
+#img-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-centered input {
+  margin-top: 20px;
+  border: none;
+  border-radius: 22px;
+  outline: 3px solid #6C63FF;
+}
+
 body {
   background: #f2f2f2;
   color: #333;
