@@ -101,7 +101,7 @@
   padding: 15px;
   border-top: 50px solid #6C63FF;
   position: relative;
-  animation: introduce 2.3s ease-in-out ;
+  animation: introduce 1.3s ease-in-out ;
 }
 
 @keyframes introduce {
