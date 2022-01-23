@@ -12,6 +12,20 @@
   color: #6C63FF;
 }
 
+#title-advancements-head {
+  animation: title 1s ease-in-out;
+}
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 #daily-logo {
   color: #333;
 }

@@ -107,10 +107,10 @@
 @keyframes introduce {
   0% {
     opacity: 0.3;
-    transform: translateX(-320px);
+    transform: translateY(+220px);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateY(0px);
     opacity: 1;
   }
 }
