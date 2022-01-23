@@ -8,17 +8,16 @@ class Cardmessage extends Component {
         const dateNow = Date.now();
         const miliseconds = dateNow - dateParse;
         const days = miliseconds / 86400000;
+        console.log(days)
         let userInfo;
         if(days < 1) {
             userInfo = 'less than a day ago'
         } else {
             let daysFormat = Math.floor(days);
-            userInfo = daysFormat + ' days ago';
+            userInfo = (daysFormat !== 1 ) ? daysFormat + ' days ago' : daysFormat + ' day ago';
         }
         return userInfo;
     }
-
-
     render() {
         const { message } = this.props
         const info = this.handleDate(message)
