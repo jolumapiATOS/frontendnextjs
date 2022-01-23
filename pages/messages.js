@@ -30,7 +30,7 @@ const ListAllMessages = () => {
         <div className="p-4">
             { loading ? <h1>Loading....</h1> : <h1>Advancements</h1>}
             <div>
-                { messages && messages.map( m => { return <Cardmessage key={m._id} message={ m } />   }) }
+                { messages && messages.map( (m, index ) => { return <Cardmessage key={m._id} index={ index + 1 } message={ m } />   }) }
             </div>
         </div>
      );
