@@ -8,17 +8,17 @@
     "orientation": "portrait-primary",
     "icons": [
             {
-            "src": "/log72.png",
+            "src": "/appready72.png",
             "type": "image/png",
             "sizes": "72x72"
         },
         {
-            "src": "/log128.png",
+            "src": "/appready128.png",
             "type": "image/png",
             "sizes": "128x128"
         },
         {
-            "src": "/log512.png",
+            "src": "/appready512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
