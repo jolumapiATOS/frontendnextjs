@@ -11,6 +11,7 @@ export default function Home() {
       <Head>
         <title> UPgrade | Daily   </title>
         <meta name='keywords' content='Tech Services' />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <div className="p-4">
       
