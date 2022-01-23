@@ -101,6 +101,18 @@
   padding: 15px;
   border-top: 50px solid #6C63FF;
   position: relative;
+  animation: introduce 2.3s ease-in-out ;
+}
+
+@keyframes introduce {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-320px);
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 
 .messageDate {
