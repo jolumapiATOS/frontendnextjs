@@ -1,10 +1,6 @@
-const staticCacheName = "site-static";
+const staticCacheName = "site-static-v7";
 const assets = [
-    "/",
-    "/logo-fom2.svg",
-    "/logo-form.svg",
-    "logo.svg",
-    "/index.html"
+    "/"
 ]
 
 self.addEventListener("install", function (event) {
