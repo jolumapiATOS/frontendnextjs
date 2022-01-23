@@ -18,11 +18,6 @@
             "sizes": "128x128"
         },
         {
-            "src": "/log152.png",
-            "type": "image/png",
-            "sizes": "152x152"
-        },
-        {
             "src": "/log512.png",
             "type": "image/png",
             "sizes": "512x512"
