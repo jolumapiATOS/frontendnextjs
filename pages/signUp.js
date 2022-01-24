@@ -6,7 +6,7 @@ const SignUp = () => {
     const [ account, setAccount ] = useState('');
     const [ teacher, setTeacher ] = useState(false);
     const [ teachers, setTeachers ] = useState(null);
-    const [ selected, setSelected ] = useState(null);
+    const [ selected, setSelected ] = useState("null");
 
     const sendInfo =  async (e) => {
         e.preventDefault();
@@ -15,7 +15,7 @@ const SignUp = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: name, password: account, teacher: teacher })
+            body: JSON.stringify({ name: name, password: account, teacherID: teacher, teacher: teacher })
         });
         if( res.status === 200 ) {
             alert("Your account has been succesfully created!");
@@ -56,10 +56,9 @@ const SignUp = () => {
                     Teacher
                     <input id="checkbox-for-teacher" checked={ teacher } onChange={ (e) => { setTeacher( e.target.value ) } } type="checkbox" />
                 </label>
-
                 <select className="my-5" value={ selected }  onChange={ (e) => { setSelected(e.target.value) } } >
                     <option value=""> None </option>
-                    { teachers && teachers.map( teach => {  return <option value={ teach._id }> { teach.name } </option>  })}
+                    { teachers && teachers.map( teach => {  return <option key={teach._id} value={ teach._id }> { teach.name } </option>  })}
                 </select>
 
                 <button className="btn btn-primary my-5" onClick={ (e)=>{ sendInfo(e) }  } > Create account </button>

@@ -61,11 +61,11 @@ const NavbarForApp = () => {
                             { auth && !teacher &&  <Link href="/messages">
                                 <a className={ styles.btnAll }> All entries </a>
                             </Link> } 
-                            { auth && teacher && <a>
+                            { auth && teacher && <Link href="/pool"> 
                                 <a className={ styles.btnAll }> Pool </a>
-                            </a> }
-                            { auth && <a onClick={ () => {  handleLogOut()  } } >
-                                <a className={ styles.btnOut }> Log Out </a>
+                            </Link> }
+                            { auth && <a  className={ styles.btnOut } onClick={ () => {  handleLogOut()  } } >
+                                Log Out 
                             </a>}
                         </Nav>
                     </Offcanvas.Body>
