@@ -8,7 +8,8 @@ class Pool extends Component {
     state = {
         messages: null,
         loading: null,
-        error: null
+        error: null,
+        counter: 0
     }
 
     componentDidMount () {
@@ -20,15 +21,22 @@ class Pool extends Component {
                 Auth: window.localStorage.getItem("Auth")
             }})
         .then( res => res.json() )
-        .then( data => {this.setState( { messages:  data.e[0][0].message } ), console.log(data) } );
+        .then( data => {
+            let contentMessages = [];
+            data.forEach( (m, i) => {
+                contentMessages[i] = [m.author.name, m.message]
+                this.setState( { counter: this.state.counter += 1 } )
+            })
+            this.setState( {messages: contentMessages} )
+            console.log( this.state )
+        });
     }
 
     render() {
         return (
             <div>
-                { this.state.messages }
-                <PoolMessages  messages={ this.state.messages } ></PoolMessages>
-                <StatusPool></StatusPool>
+                <StatusPool counting={ this.state.counter }  />
+               <PoolMessages messages={ this.state.messages } />
             </div>
         );
     }

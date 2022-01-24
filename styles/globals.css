@@ -16,6 +16,15 @@
   color: #6C63FF;
 }
 
+.container-status {
+  background-color: #6C63FF;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 20px 20px 0;
+}
+
 #title-advancements-head {
   animation: title 1s ease-in-out;
 }
