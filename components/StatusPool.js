@@ -2,7 +2,7 @@ const StatusPool = ({ counting }) => {
     console.log( counting )
     return ( 
         <div className="p-4 container-status">
-            <h2 className="text-light">Uploaded: { counting } </h2>
+            <h2 className="text-light m-0">Uploaded: { counting } </h2>
         </div>
      );
 }
