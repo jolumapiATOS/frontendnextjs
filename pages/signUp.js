@@ -4,7 +4,7 @@ import Image from 'next/image';
 const SignUp = () => {
     const [name, setName ] = useState('');
     const [ account, setAccount ] = useState('');
-    const [ teacher, setTeacher ] = useState(false);
+    const [ teacher, setTeacher ] = useState(null);
     const [ teachers, setTeachers ] = useState(null);
     const [ selected, setSelected ] = useState("null");
 
@@ -15,7 +15,7 @@ const SignUp = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: name, password: account, teacherID: teacher, teacher: teacher })
+            body: JSON.stringify({ name: name, password: account, teacherID: selected, teacher: teacher })
         });
         if( res.status === 200 ) {
             alert("Your account has been succesfully created!");
@@ -53,8 +53,9 @@ const SignUp = () => {
                 { account }
                 <br />
                 <label className="mx-3">
-                    Teacher
-                    <input id="checkbox-for-teacher" checked={ teacher } onChange={ (e) => { setTeacher( e.target.value ) } } type="checkbox" />
+                    <span> I'm a teacher </span> 
+                    <input id="checkbox-for-teacher" onClick={ (e) => { setTeacher( e.target.value ), console.log(e) }  } type="checkbox" />
+                    { teacher }
                 </label>
                 <select className="my-5" value={ selected }  onChange={ (e) => { setSelected(e.target.value) } } >
                     <option value=""> None </option>
