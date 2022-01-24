@@ -6,14 +6,22 @@ import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 const NavbarForApp = () => {
-
     const [auth, setAuth] = useState(null);
+    const [ teacher, setTeacher ] = useState(false);
+
     useEffect(() => {
        if(window.localStorage.Auth){
-           setAuth(localStorage.getItem('Auth'))
+           setAuth(localStorage.getItem('Auth'));
        } else {
            setAuth(null)
        }
+
+       if(window.localStorage.Teacher === "true") {
+           setTeacher(localStorage.getItem('Teacher'));
+       } else {
+           setTeacher(null)
+       }
+
     }, [auth]);
 
     const handleLogOut = () => {
@@ -38,21 +46,24 @@ const NavbarForApp = () => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1">
-                            { auth && <Link href="/newMessage">
+                            { auth && !teacher && <Link href="/newMessage">
                                 <a className={ styles.btnAll }> New + </a>
                             </Link>}
-                            { auth && <Link href="/">
+                            { auth && !teacher &&  <Link href="/">
                                 <a className={ styles.btnAll }> Home </a>
                             </Link>}
                             { !auth && <Link href="/login">
                                 <a className={ styles.btnAll }> Login </a>
                             </Link>}
-                            { !auth && <Link href="/signUp">
+                            { !auth &&  <Link href="/signUp">
                                 <a className={ styles.btnAll }> Sign Up </a>
                             </Link>}
-                            { auth && <Link href="/messages">
+                            { auth && !teacher &&  <Link href="/messages">
                                 <a className={ styles.btnAll }> All entries </a>
                             </Link> } 
+                            { auth && teacher && <a>
+                                <a className={ styles.btnAll }> Pool </a>
+                            </a> }
                             { auth && <a onClick={ () => {  handleLogOut()  } } >
                                 <a className={ styles.btnOut }> Log Out </a>
                             </a>}

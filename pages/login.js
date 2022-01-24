@@ -25,6 +25,7 @@ const Login = () => {
               })
         } else {
             window.localStorage.setItem("Auth", data.jwt);
+            window.localStorage.setItem("Teacher", data.teacher);
             Swal.fire(
                 'Successfully logged in!',
                 'You clicked the button!',

@@ -8,6 +8,10 @@
     outline: 2px solid #6C63FF;
 }
 
+#checkbox-for-teacher {
+  outline: none;
+}
+
 #navbar-logo-mine {
   color: #6C63FF;
 }
