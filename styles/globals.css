@@ -18,11 +18,12 @@
 
 .container-status {
   background-color: #6C63FF;
-  width: 35%;
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0px 20px 20px 0;
+  border-radius: 0px 40px 40px 0;
+  height: 70px;
 }
 
 #title-advancements-head {
