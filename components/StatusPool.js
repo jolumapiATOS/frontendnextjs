@@ -2,7 +2,7 @@ const StatusPool = ({ counting, error }) => {
     console.log( counting )
     return ( 
         <>
-            { counting === 0 && <div id="spinner-for-teacher" class="spinner-border text-info" role="status">
+            { counting === 0 && <div id="spinner-for-teacher" className="spinner-border text-info" role="status">
             <span class="visually-hidden">Loading...</span>
             </div> }
             <div className="p-4 container-status">
