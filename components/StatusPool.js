@@ -1,9 +1,14 @@
-const StatusPool = ({ counting }) => {
+const StatusPool = ({ counting, error }) => {
     console.log( counting )
     return ( 
-        <div className="p-4 container-status">
-            <h2 className="text-light m-0">Uploaded: { counting } </h2>
-        </div>
+        <>
+            { counting === 0 && <div id="spinner-for-teacher" class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+            </div> }
+            <div className="p-4 container-status">
+            { (counting !== 0) && ( error === null )  ?  <h2 className="text-light m-0">Uploaded: { counting } </h2> : <h2 className="text-light m-0"> Loading </h2> }
+            </div>
+        </>
      );
 }
  

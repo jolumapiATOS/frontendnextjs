@@ -16,6 +16,12 @@
   color: #6C63FF;
 }
 
+#spinner-for-teacher {
+  position: absolute;
+  right: 20%;
+  top: 20%;
+}
+
 .container-status {
   background-color: #6C63FF;
   width: 45%;

@@ -29,13 +29,13 @@ class Pool extends Component {
             })
             this.setState( {messages: contentMessages} )
             console.log( this.state )
-        });
+        }).catch( e => { this.setState( { error: "oops!" } ) })
     }
 
     render() {
         return (
             <div>
-                <StatusPool counting={ this.state.counter }  />
+                <StatusPool counting={ this.state.counter } error={ this.state.error }  />
                <PoolMessages messages={ this.state.messages } />
             </div>
         );
