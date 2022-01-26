@@ -6,7 +6,7 @@ const SignUp = () => {
     const [ account, setAccount ] = useState('');
     const [ teacher, setTeacher ] = useState(null);
     const [ teachers, setTeachers ] = useState(null);
-    const [ selected, setSelected ] = useState("null");
+    const [ selected, setSelected ] = useState([]);
 
     const sendInfo =  async (e) => {
         e.preventDefault();
@@ -35,9 +35,16 @@ const SignUp = () => {
         setTeachers( data.teachers );
     }, [])
     
-        
-    
 
+    const handleMultiple = (e) => {
+        setSelected( prev => {
+        let array = [ ...prev ]
+        console.log(array)
+        array.push( e.target.value )
+        return array;
+        })
+    }
+    console.log(selected)
 
     return ( 
         <div className="p-4">
@@ -57,7 +64,7 @@ const SignUp = () => {
                     <input id="checkbox-for-teacher" onClick={ (e) => { setTeacher( e.target.value ), console.log(e) }  } type="checkbox" />
                     { teacher }
                 </label>
-                <select className="my-5" value={ selected }  onChange={ (e) => { setSelected(e.target.value) } } >
+                <select multiple={true} className="my-5"  value={ selected }   onChange={ handleMultiple } >
                     <option value=""> None </option>
                     { teachers && teachers.map( teach => {  return <option key={teach._id} value={ teach._id }> { teach.name } </option>  })}
                 </select>
