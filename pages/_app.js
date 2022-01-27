@@ -18,6 +18,18 @@ function MyApp({ Component, pageProps }) {
         );
       });
     }
+
+    if(!Worker) {
+      console.log("Service not available! Please change or update your web browser")
+    } else {
+      let workerDB = new Worker("/wwDB.js");
+      workerDB.onmessage = function (oEvent) {
+        console.log("Called back by the worker!\n");
+      };
+      workerDB.postMessage("Start working on the IndexedDB Database")
+    }
+
+
   }, []);
 
   return (

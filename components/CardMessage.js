@@ -23,7 +23,7 @@ class Cardmessage extends Component {
         const info = this.handleDate(message)
         return (
             <div className={styles.container}>
-                <p> { this.props.message.message } </p>
+                <p> { this.props.message } </p>
                 <p className={ styles.messageDate }> { info } </p>
                 { (index === 1) ? <p className={ styles.counterRecent }> most recent </p> : <p className={ styles.counter }> { index } </p>}
             </div>
