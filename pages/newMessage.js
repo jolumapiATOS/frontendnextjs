@@ -2,9 +2,13 @@ import { useState } from "react";
 import { useRouter } from 'next/router'
 
 const CreateNewMessage = () => {
+    const [messageUser , setMessage] = useState('');
+    const [ write, setWrite ] = useState(null)
     const router = useRouter();
 
-
+    const writting = () => {
+     setWrite("Writing...." + "." )
+    }
     const savingFiles = () => {
         console.log("Triggered")
         const request = indexedDB.open("AtosDB", 1);
@@ -25,8 +29,7 @@ const CreateNewMessage = () => {
         };
     }
 
-    const [messageUser , setMessage] = useState('');
-    const [ write, setWrite ] = useState(null)
+
     
 
     // const sendInfo = async (e) => {
@@ -42,9 +45,6 @@ const CreateNewMessage = () => {
     //     }).catch( e => { console.log(e) } )
     //     const data = await resp.json();
     //     router.push("/messages");
-    // }
-    // const writting = () => {
-    //     setWrite("Writing...." + "." )
     // }
 
     return ( 
