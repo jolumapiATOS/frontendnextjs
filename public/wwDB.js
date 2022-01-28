@@ -20,7 +20,7 @@ self.onmessage = (auth) => {
     }
 
     async function sendInfo (message)  {
-        fetch("http://localhost:8000/postingAllMessages", {
+        fetch("https://node-server-for-upgrade.herokuapp.com/postingAllMessages", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
