@@ -12,11 +12,12 @@ const CreateNewMessage = () => {
     const savingFiles = () => {
         console.log("Triggered")
         const request = indexedDB.open("AtosDB", 1);
+        let db;
         request.onerror = function(event) {
             console.log("Encounter an error inside the DB");
           };
         request.onsuccess = function(event) {
-            const db = request.result;
+            db = request.result;
             const transaction = db.transaction('messages', 'readwrite');
             const store = transaction.objectStore('messages');
             store.put({ message: messageUser, time: Date.now()})
@@ -27,6 +28,7 @@ const CreateNewMessage = () => {
         // Create an objectStore for this database
         const store = db.createObjectStore("messages", { autoIncrement : true });
         };
+
     }
 
 
