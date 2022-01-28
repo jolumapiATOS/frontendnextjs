@@ -1,5 +1,5 @@
 const staticCacheName = "site-static-v17";
-const dynamicCacheName = "v4"
+const dynamicCacheName = "v5"
 const assets = [
     "/",
     "/offline/offline.html",

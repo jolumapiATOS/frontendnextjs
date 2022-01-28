@@ -19,16 +19,22 @@ function MyApp({ Component, pageProps }) {
       });
     }
 
-    if(!Worker) {
-      console.log("Service not available! Please change or update your web browser")
-    } else {
-      let workerDB = new Worker("/wwDB.js");
-      workerDB.onmessage = function (oEvent) {
-        console.log("Called back by the worker!\n");
-      };
-      workerDB.postMessage("Start working on the IndexedDB Database")
-    }
-
+    setInterval(() => {
+      if(navigator.onLine) {
+        if(!Worker) {
+          console.log("Service not available! Please change or update your web browser")
+        } else {
+          let workerDB = new Worker("/wwDB.js");
+          workerDB.onmessage = function (oEvent) {
+            console.log("Called back by the worker!", oEvent);
+          };
+          workerDB.postMessage(self.localStorage.Auth)
+        }
+        //console.log("online")
+       } else {
+        console.log("offline")
+       }
+      },30000 )
 
   }, []);
 
