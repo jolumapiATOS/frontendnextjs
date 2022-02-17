@@ -2,6 +2,8 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
+//WebSocket Connection
+import '../public/service.js'
 
 function MyApp({ Component, pageProps }) {
 
@@ -48,6 +50,7 @@ function MyApp({ Component, pageProps }) {
           let workerDB = new Worker("/wwDB.js");
           workerDB.onmessage = function (oEvent) {
             console.log("Called back by the worker!", oEvent);
+            workerDB.terminate();
           };
           workerDB.postMessage(self.localStorage.Auth)
         }
@@ -58,6 +61,7 @@ function MyApp({ Component, pageProps }) {
       },30000 )
 
   }, []);
+
 
   return (
     <Layout>
