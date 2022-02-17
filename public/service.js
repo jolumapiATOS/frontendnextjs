@@ -1,5 +1,5 @@
 const { io } = require("socket.io-client");
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
 
 
 
@@ -18,3 +18,6 @@ socket.on('jwt', (payload) =>{
 socket.on("disconnect", () => {
     console.log("Socket disconnected"); // false
 });
+
+
+export { socket }

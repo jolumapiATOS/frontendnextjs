@@ -1,6 +1,5 @@
 self.onmessage = (auth) => {
     let token = auth.data;
-    let data;
     let queryData;
 
     const request = indexedDB.open("AtosDB", 1);
@@ -15,7 +14,7 @@ self.onmessage = (auth) => {
         query.onsuccess = function() {
             console.log(query.result)
             queryData = query.result
-           sendInfo(queryData);
+            sendInfo(queryData);
         }
     }
 
@@ -31,21 +30,9 @@ self.onmessage = (auth) => {
             if(response.status === 201) {
                 return response.json()
             }
-        }).then( data => {
-            self.postMessage(data.notification)
+        }).then( datas => {
+            self.postMessage(datas.notification)
         })
     }
-
-    // const resp = await fetch("http://localhost:8000/message/new", {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         Auth: token
-    //     },
-    //     body: JSON.stringify({messageUser: message})
-    // }).catch( e => { console.log(e) } )
-    // data = await resp.json();
-    // }
-    
     
 }

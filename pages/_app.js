@@ -52,7 +52,12 @@ function MyApp({ Component, pageProps }) {
             console.log("Called back by the worker!", oEvent);
             workerDB.terminate();
           };
-          workerDB.postMessage(self.localStorage.Auth)
+          if(self.localStorage.getItem('Auth') !==  null ) {
+            workerDB.postMessage(self.localStorage.Auth)
+          } else {
+            workerDB.terminate();
+          }
+         
         }
         //console.log("online")
        } else {
