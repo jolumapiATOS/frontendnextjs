@@ -1,4 +1,7 @@
+
+
 self.onmessage = (auth) => {
+
     let token = auth.data;
     let queryData;
 

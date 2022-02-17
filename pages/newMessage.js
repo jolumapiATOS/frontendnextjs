@@ -9,6 +9,7 @@ const CreateNewMessage = () => {
     const writting = () => {
      setWrite("Writing...." + "." )
     }
+
     const savingFiles = () => {
         console.log("Triggered")
         const request = indexedDB.open("AtosDB", 1);
@@ -30,24 +31,6 @@ const CreateNewMessage = () => {
         };
 
     }
-
-
-    
-
-    // const sendInfo = async (e) => {
-    //     setWrite(null);
-    //     e.preventDefault()
-    //     const resp = await fetch("https://node-server-for-upgrade.herokuapp.com/message/new", {
-    //         method: "POST",
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Auth: self.localStorage.Auth
-    //         },
-    //         body: JSON.stringify({messageUser})
-    //     }).catch( e => { console.log(e) } )
-    //     const data = await resp.json();
-    //     router.push("/messages");
-    // }
 
     return ( 
         <div id="container-message-new" className="p-4">

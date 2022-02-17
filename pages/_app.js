@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
 //WebSocket Connection
 import '../public/service.js'
+import { socket } from '../public/service.js'
 
 function MyApp({ Component, pageProps }) {
 
@@ -43,27 +44,23 @@ function MyApp({ Component, pageProps }) {
     }
 
     setInterval(() => {
+      console.log("Trying to save the data")
       if(navigator.onLine) {
-        if(!Worker) {
-          console.log("Service not available! Please change or update your web browser")
-        } else {
-          let workerDB = new Worker("/wwDB.js");
-          workerDB.onmessage = function (oEvent) {
-            console.log("Called back by the worker!", oEvent);
-            workerDB.terminate();
-          };
-          if(self.localStorage.getItem('Auth') !==  null ) {
-            workerDB.postMessage(self.localStorage.Auth)
-          } else {
-            workerDB.terminate();
+        const request = indexedDB.open('AtosDB', 1);
+        let db;
+
+      request.onsuccess = function(e){
+          db = e.target.result;
+          const transaction = db.transaction('messages', 'readwrite');
+          const store = transaction.objectStore('messages');
+          const query = store.getAll();
+          query.onsuccess = function() {
+              let messages = query.result;
+              socket.emit('bulk', {messages, user: localStorage.getItem("Auth")})
           }
-         
         }
-        //console.log("online")
-       } else {
-        console.log("offline")
-       }
-      },30000 )
+      }
+      }, 10000)
 
   }, []);
 
