@@ -55,6 +55,10 @@
   margin: 0;
 }
 
+#off-my-canvas {
+  width: 220px;
+}
+
 #img-logo {
   display: flex;
   justify-content: center;

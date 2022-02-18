@@ -17,11 +17,12 @@ const NavbarForApp = () => {
             setOnline('Online')
             console.log("Succesfully connected to the socket");
         });
-
+        
         socket.on("disconnect", () => {
-            setOnline("Offline")
-            console.log("Succesfully connected to the socket");
-        });
+        setOnline("Offline")
+        console.log("Succesfully disconnectedof the socket");
+        })
+        
 
 
        if(window.localStorage.Auth){
@@ -54,6 +55,7 @@ const NavbarForApp = () => {
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
                     placement="end"
+                    id="off-my-canvas"
                     >
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>

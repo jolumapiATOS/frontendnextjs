@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
         const request = indexedDB.open('AtosDB', 1);
         let db;
 
-      request.onsuccess = function(e){
+          request.onsuccess = function(e){
           db = e.target.result;
           const transaction = db.transaction('messages', 'readwrite');
           const store = transaction.objectStore('messages');
