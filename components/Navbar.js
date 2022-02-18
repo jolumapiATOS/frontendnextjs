@@ -10,8 +10,14 @@ const NavbarForApp = () => {
     const [auth, setAuth] = useState(null);
     const [ teacher, setTeacher ] = useState(false);
     const [ online, setOnline ] = useState("Connecting...");
+    const [ title, setTitle ] = useState('Daily');
 
     useEffect(() => {
+        
+        socket.on('username', (payload) => {
+            let firstname = payload.split(' ')[0]
+            setTitle(firstname);
+        })
 
         socket.on("connect", () => {
             setOnline('Online')
@@ -19,7 +25,8 @@ const NavbarForApp = () => {
         });
         
         socket.on("disconnect", () => {
-        setOnline("Offline")
+        setOnline("Offline");
+        setTitle("Daily");
         console.log("Succesfully disconnectedof the socket");
         })
         
@@ -50,7 +57,7 @@ const NavbarForApp = () => {
         <>
             <Navbar id="navbar-canvas-off-mine" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | <strong id="daily-logo">Daily</strong>  </Navbar.Brand>
+                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | <strong id="daily-logo"> { title } 😎 </strong>  </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
