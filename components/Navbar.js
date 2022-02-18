@@ -4,13 +4,28 @@ import { Container } from "react-bootstrap";
 import { Navbar, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from "react-bootstrap";
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+import { socket } from '../public/service.js'
 
 const NavbarForApp = () => {
     const [auth, setAuth] = useState(null);
     const [ teacher, setTeacher ] = useState(false);
+    const [ online, setOnline ] = useState("Connecting...");
 
     useEffect(() => {
+
+        socket.on("connect", () => {
+            setOnline('Online')
+            console.log("Succesfully connected to the socket");
+        });
+
+        socket.on("disconnect", () => {
+            setOnline("Offline")
+            console.log("Succesfully connected to the socket");
+        });
+
+
        if(window.localStorage.Auth){
+            setOnline('offline')
            setAuth(localStorage.getItem('Auth'));
        } else {
            setAuth(null)
@@ -22,7 +37,7 @@ const NavbarForApp = () => {
            setTeacher(null)
        }
 
-    }, [auth]);
+    }, [auth, socket]);
 
     const handleLogOut = () => {
         window.localStorage.removeItem('Auth');
@@ -32,14 +47,13 @@ const NavbarForApp = () => {
 
     return ( 
         <>
-            <Navbar bg="light" expand={false}>
+            <Navbar id="navbar-canvas-off-mine" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand id="navbar-logo-mine" href="/">UPgrade | <strong id="daily-logo">Daily</strong>  </Navbar.Brand>
+                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | <strong id="daily-logo">Daily</strong>  </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
                     placement="end"
-                    id="navbar-canvas-off-mine"
                     >
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>

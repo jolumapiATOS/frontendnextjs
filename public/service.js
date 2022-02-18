@@ -7,10 +7,12 @@ const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
 //Connection established
 socket.on("connect", () => {
     console.log("Succesfully connected to the socket");
+    
 });
 
 socket.on('jwt', (payload) =>{
     socket.emit('auth', localStorage.getItem("Auth"))
+    
 })
 
 // socket.on('messages', () => {
