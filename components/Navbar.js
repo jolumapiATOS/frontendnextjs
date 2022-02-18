@@ -57,7 +57,7 @@ const NavbarForApp = () => {
         <>
             <Navbar id="navbar-canvas-off-mine" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | <strong id="daily-logo"> { title } 😎 </strong>  </Navbar.Brand>
+                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | { title === 'Daily' ?  <strong id="daily-logo"> { title } 🤔 </strong> : <strong id="daily-logo"> { title } 😎 </strong> }    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
