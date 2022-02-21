@@ -2,31 +2,38 @@ import React, { Component } from 'react';
 import styles from '../styles/Home.module.css'
 
 class Cardmessage extends Component {
-    handleDate (message) {
-        const date = new Date( message.createdAt );
-        const dateParse = Date.parse( date );
-        const dateNow = Date.now();
-        const miliseconds = dateNow - dateParse;
-        const days = miliseconds / 86400000;
-        console.log(days)
-        let userInfo;
-        if(days < 1) {
-            userInfo = 'less than a day ago'
-        } else {
-            let daysFormat = Math.floor(days);
-            userInfo = (daysFormat !== 1 ) ? daysFormat + ' days ago' : daysFormat + ' day ago';
-        }
-        return userInfo;
+    handleDate(m) {
+        
+            let date = new Date(m[1]);
+            let parsed = Date.parse(date);
+            let dateNow = Date.now()
+            let difference = dateNow - parsed
+            let days = difference / 86400000;
+            console.log(days)
+            return Math.floor(days);
+            
+        
     }
+    
     render() {
-        const { message, index } = this.props
-        const info = this.handleDate(message)
+        let element
+        if( this.props.messages ) {
+            element = this.props.messages.map((m, i) => {
+                let date = this.handleDate(m)
+                return (
+                    <div className={styles.container}>
+                        <p> { m[0] } </p>
+                        { date > 1 ? <p className={ styles.messageDate }> { date } days ago </p> : <p className={ styles.messageDate }> a day ago </p> }
+                        { (i === 0) ? <p className={ styles.counterRecent }> most recent </p> : <p className={ styles.counter }> { i + 1 } </p>}
+                    </div>
+                )
+            })
+        }
+        
         return (
-            <div className={styles.container}>
-                <p> { this.props.message } </p>
-                <p className={ styles.messageDate }> { info } </p>
-                { (index === 1) ? <p className={ styles.counterRecent }> most recent </p> : <p className={ styles.counter }> { index } </p>}
-            </div>
+            <section>
+                { element }
+            </section>
         );
     }
 }

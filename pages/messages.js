@@ -3,21 +3,7 @@ import Cardmessage from "../components/CardMessage";
 
 const ListAllMessages = () => {
     const [messages, setMessages] = useState(null);
-    // const abortCont = new AbortController();
-    //     fetch('https://node-server-for-upgrade.herokuapp.com/getMyMessages', {
-    //         signal: abortCont.signal,
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Auth: self.localStorage.Auth
-    //         }
-    //     }).then(response => {
-    //         return response.json();
-    //     }).then( data => {
-    //         setLoading(null);
-    //         setMessages(data.messages);
-    //     }).catch(e => { console.log(e) })
-    //         setLoading(null)
-    //     return () => abortCont.abort();
+ 
     useEffect(()=> {
         const request = indexedDB.open("AtosDB", 1);
         request.onerror = function(event) {
@@ -30,10 +16,11 @@ const ListAllMessages = () => {
             const query = store.getAll();
             query.onsuccess = function() {
                 let queryMessages = [];
-                query.result.forEach(e => {
-                    queryMessages.push( e.message ); 
+                query.result.forEach((e,i) => {
+                    queryMessages[i] = [ e.message, e.time ]
                 })
                 let reversedArray = queryMessages.reverse();
+                console.log(reversedArray)
                 setMessages( reversedArray );
             }
         };
@@ -46,7 +33,7 @@ const ListAllMessages = () => {
             </div> }
             { (messages === null) ? <h1>Loading....</h1> : <h1 id="title-advancements-head">Advancements</h1>}
             <div>
-            { messages && messages.map( (m, index) => { return <Cardmessage key={index} index={ index + 1 } message={ m } />   }) }
+            <Cardmessage messages={messages} />
             </div>
         </div>
      );
