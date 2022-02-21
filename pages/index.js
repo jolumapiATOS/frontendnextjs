@@ -9,8 +9,18 @@ import { socket }  from '../public/service.js';
 
 export default function Home() {
   const [log, setLog] = useState('unknown');
+  const [info, setInfo] = useState(null);
 
-  useEffect(() => {
+  useEffect( async () => {
+
+    fetch('https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=' + process.env.customKey)
+    .then(res => {
+      return res.json()
+    })
+    .then( data => {
+      setInfo(data);
+    })
+
     socket.on('username', () => {
       setLog("known")
     })
@@ -52,28 +62,38 @@ export default function Home() {
 
       { log === "known" && <div className="p-4">
           <section className='container-for-mobile'>
-            <div>
-              <h4>Websocket</h4>
-              <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
-                Every time the state changes it receives an update.
-              </p>
-            </div>
-            <div>
-              <h4>JWT</h4>
-              <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
-            </div>
-            <div>
-              <h4>Databases</h4>
-              <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud. 
-                When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
-                it updates Mongo.
-              </p>
-            </div>
-            <div>
-              <h4>PWA</h4>
-              <p>
-                The app is installable and fully operational even offline.
-              </p>
+            
+              <h3> News | { info && info.results.length } </h3>
+              <div className='container-for-abstract'> 
+                { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
+                <h6 className='header-for-conatiner'>Abstract</h6>
+              </div>
+
+            <div className='technical-container'>
+              <h6 className='box-tech'>Technical Info</h6>
+              <div>
+                <h4>Websocket</h4>
+                <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
+                  Every time the state changes it receives an update.
+                </p>
+              </div>
+              <div>
+                <h4>JWT</h4>
+                <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
+              </div>
+              <div>
+                <h4>Databases</h4>
+                <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud. 
+                  When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
+                  it updates Mongo.
+                </p>
+              </div>
+              <div>
+                <h4>PWA</h4>
+                <p>
+                  The app is installable and fully operational even offline.
+                </p>
+              </div>
             </div>
           </section>
 
