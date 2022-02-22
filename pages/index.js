@@ -63,7 +63,7 @@ export default function Home() {
       { log === "known" && <div className="p-4">
           <section className='container-for-mobile'>
             
-              <h3> News | { info && info.results.length } </h3>
+              <h3> NY Times | { info && info.results.length } </h3>
               <div className='container-for-abstract'> 
                 { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
                 <h6 className='header-for-conatiner'>Abstract</h6>
