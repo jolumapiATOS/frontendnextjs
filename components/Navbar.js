@@ -5,6 +5,7 @@ import { Navbar, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from "
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import { socket } from '../public/service.js'
+import { clearDatabase } from '../public/databaseService.js/deleteServiceDB.js'
 
 const NavbarForApp = () => {
     const [auth, setAuth] = useState(null);
@@ -48,6 +49,7 @@ const NavbarForApp = () => {
     }, [auth, socket]);
 
     const handleLogOut = () => {
+        clearDatabase();
         window.localStorage.removeItem('Auth');
         setAuth(null);
         location.replace("/");

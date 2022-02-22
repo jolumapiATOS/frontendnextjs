@@ -16,11 +16,38 @@ socket.on('jwt', (payload) =>{
     
 })
 
+socket.on('fetch-messages', (payload) => {
+    (function AddMultiple () {
+        console.log("Activated from the function", payload)
+        const request = indexedDB.open("AtosDB", 1);
+        let db;
+        request.onerror = function(event) {
+            console.log("Encounter an error inside the DB");
+          };
+        request.onsuccess = function(event) {
+            db = event.target.result
+            const transaction = db.transaction('messages', 'readwrite');
+            const store = transaction.objectStore('messages');
+            addMore(payload.messages, store)
+        };
+        function addMore(array, store) {
+            let requestOnData;
+            for(let i = 0; i < array.length; i ++ ) {
+                requestOnData = store.put({ message: array[i].message, time: Date.now()})
+            }
+            requestOnData.onsuccess = () => {
+                console.log("Successfully saved")
+            }
+        }
+    }())
+    
+})
+
 socket.on("invalid", () => {
     let timerInterval
     Swal.fire({
     title: 'Login 🤞',
-    html: 'You know you want to. <b></b> milliseconds.',
+    html: '<b></b> milliseconds.',
     timer: 2000,
     timerProgressBar: true,
     didOpen: () => {
