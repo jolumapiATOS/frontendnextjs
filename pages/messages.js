@@ -33,7 +33,7 @@ const ListAllMessages = () => {
             </div> }
             { (messages === null) ? <h1>Loading....</h1> : <h1 id="title-advancements-head">Advancements</h1>}
             <div>
-            <Cardmessage messages={messages} />
+                <Cardmessage messages={messages} />
             </div>
         </div>
      );
