@@ -3,18 +3,13 @@ import styles from '../styles/Home.module.css'
 
 class Cardmessage extends Component {
     handleDate(m) {
-        
             let date = new Date(m[1]);
             let parsed = Date.parse(date);
             let dateNow = Date.now()
             let difference = dateNow - parsed
             let days = difference / 86400000;
-            console.log(days)
             return Math.floor(days);
-            
-        
     }
-    
     render() {
         let element
         if( this.props.messages ) {
