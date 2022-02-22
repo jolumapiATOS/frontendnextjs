@@ -72,9 +72,6 @@ const NavbarForApp = () => {
                             { auth && !teacher && <Link href="/newMessage">
                                 <a className={ styles.btnAll }> New + </a>
                             </Link>}
-                            { auth && !teacher &&  <Link href="/">
-                                <a className={ styles.btnAll }> Home </a>
-                            </Link>}
                             { !auth && <Link href="/login">
                                 <a className={ styles.btnAll }> Login </a>
                             </Link>}
