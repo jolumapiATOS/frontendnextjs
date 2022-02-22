@@ -9,14 +9,20 @@ const Login = () => {
 
     const sendInfo =  async (e) => {
         e.preventDefault();
+        /**
+         * @description this should inside of a try catch to handle errors
+         */
         const res = await fetch('https://node-server-for-upgrade.herokuapp.com/user/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: name, password: account })
+            body: JSON.stringify({ name: name, password: account }) // * @ not quite sure, about using the raw password on the http request is the best practice maybe some encriptation will be nice
         });
-        const data = await res.json();
+        // * @ this is the tail
+        // * .then((response) => response.json());
+        const data = await res.json(); // * @ this is could be part of the then tail of the before promise, and it can be removed
+        // * @ so you can use one single await and one single try catch to handle the errors
         if( data.notification === "User not found" ) {
             Swal.fire({
                 icon: 'error',
@@ -40,6 +46,7 @@ const Login = () => {
         <div className="p-4">
             <h1 className="text-center">Welcome back!</h1>
             <div id="img-logo">
+                {/* @ images can be abstracted from direct importation to js file that holds all the graphics urls into object */}
                 <Image src="/logo-form.svg" height={200} width={200} alt="logo"></Image>
             </div>
             <div className="container-centered">

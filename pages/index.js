@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { socket }  from '../public/service.js';
+import { socket } from '../public/service.js';
 
 
 
@@ -11,15 +11,15 @@ export default function Home() {
   const [log, setLog] = useState('unknown');
   const [info, setInfo] = useState(null);
 
-  useEffect( async () => {
+  useEffect(async () => {
 
     fetch('https://api.nytimes.com/svc/mostpopular/v2/shared/1/facebook.json?api-key=' + process.env.customKey)
-    .then(res => {
-      return res.json()
-    })
-    .then( data => {
-      setInfo(data);
-    })
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        setInfo(data);
+      })
 
     socket.on('username', () => {
       setLog("known")
@@ -27,7 +27,7 @@ export default function Home() {
 
     socket.on("disconnect", () => {
       setLog("unknown") // false
-  });
+    });
 
   }, [socket])
 
@@ -39,12 +39,12 @@ export default function Home() {
         <meta name='keywords' content='Tech Services' />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      
-      { log === "unknown" && <div className="p-4">
+
+      {log === "unknown" && <div className="p-4">
         <h1 className={styles.title}> UPgrade | Frontend </h1>
         <p>
-            The purpose of this app is for you to give daily feedback on all of your
-            projects and daily advancements. Use it wisely and enjoy it. This app was created for you guys!
+          The purpose of this app is for you to give daily feedback on all of your
+          projects and daily advancements. Use it wisely and enjoy it. This app was created for you guys!
         </p>
         <h6>Loosely coupled architecture</h6>
         <ul>
@@ -58,44 +58,44 @@ export default function Home() {
         <div id="img-logo" >
           <Image src="/logoApp.svg" height={200} width={200} alt="image-for-everyone" ></Image>
         </div>
-      </div> }
+      </div>}
 
-      { log === "known" && <div className="p-4">
-          <section className='container-for-mobile'>
-            
-              <h3> News | { info && info.results.length } </h3>
-              <div className='container-for-abstract'> 
-                { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
-                <h6 className='header-for-conatiner'>Abstract</h6>
-              </div>
+      {log === "known" && <div className="p-4">
+        <section className='container-for-mobile'>
 
-            <div className='technical-container'>
-              <h6 className='box-tech'>Technical Info</h6>
-              <div>
-                <h4>Websocket</h4>
-                <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
-                  Every time the state changes it receives an update.
-                </p>
-              </div>
-              <div>
-                <h4>JWT</h4>
-                <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
-              </div>
-              <div>
-                <h4>Databases</h4>
-                <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud. 
-                  When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
-                  it updates Mongo.
-                </p>
-              </div>
-              <div>
-                <h4>PWA</h4>
-                <p>
-                  The app is installable and fully operational even offline.
-                </p>
-              </div>
+          <h3> News | {info && info.results.length} </h3>
+          <div className='container-for-abstract'>
+            {info && <p className='m-0'> {info.results[1].abstract} </p>}
+            <h6 className='header-for-conatiner'>Abstract</h6>
+          </div>
+
+          <div className='technical-container'>
+            <h6 className='box-tech'>Technical Info</h6>
+            <div>
+              <h4>Websocket</h4>
+              <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
+                Every time the state changes it receives an update.
+              </p>
             </div>
-          </section>
+            <div>
+              <h4>JWT</h4>
+              <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
+            </div>
+            <div>
+              <h4>Databases</h4>
+              <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud.
+                When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
+                it updates Mongo.
+              </p>
+            </div>
+            <div>
+              <h4>PWA</h4>
+              <p>
+                The app is installable and fully operational even offline.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* This section is for desktop only */}
         <h3 className="desktop-instructions"> Application Details </h3>
@@ -104,29 +104,29 @@ export default function Home() {
           Please install this app on your phone before you start using. You will find it more intuitive.
         </p>
         <section className='container-for-grid'>
-            <div className='container-in-grid'>
-              <h4>Websocket</h4>
-              <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
-                Every time the state changes it receives an update.
-              </p>
-            </div>
-            <div className='container-in-grid'>
-              <h4>JWT</h4>
-              <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
-            </div>
-            <div className='container-in-grid'>
-              <h4>Databases</h4>
-              <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud. 
-                When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
-                it updates Mongo.
-              </p>
-            </div>
-            <div className='container-in-grid'>
-              <h4>PWA</h4>
-              <p>
-                The app is installable and fully operational even offline.
-              </p>
-            </div>
+          <div className='container-in-grid'>
+            <h4>Websocket</h4>
+            <p>The app keeps track of whether you are connected or not. However you can still play around with the app.
+              Every time the state changes it receives an update.
+            </p>
+          </div>
+          <div className='container-in-grid'>
+            <h4>JWT</h4>
+            <p> To persist info and maintain the socket connection open you must provide a valid token  </p>
+          </div>
+          <div className='container-in-grid'>
+            <h4>Databases</h4>
+            <p>We have two databases running. One on the client side storing all his activities. The other one is running on the Cloud.
+              When the user is connected the app reaches the backend and compares both versions. If the the one th user has is more recent
+              it updates Mongo.
+            </p>
+          </div>
+          <div className='container-in-grid'>
+            <h4>PWA</h4>
+            <p>
+              The app is installable and fully operational even offline.
+            </p>
+          </div>
         </section>
       </div>}
 

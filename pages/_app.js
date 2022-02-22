@@ -7,7 +7,9 @@ import '../public/service.js'
 import { socket } from '../public/service.js'
 
 function MyApp({ Component, pageProps }) {
-
+  /**
+   * @description this could be a custom hook by the size of code on this useEffect
+   */
   useEffect(()=> {
     if("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
