@@ -73,6 +73,23 @@
   margin-top: 25px;
 }
 
+.users-container-for-id {
+  padding: 10px;
+  border: 4px solid #7900FF;
+  border-radius: 18px;
+  margin: 30px 0px;
+  position: relative;
+}
+
+.title-for-container-id {
+  position: absolute;
+  background-color: white;
+  top: -15px;
+  left: 25px;
+  letter-spacing: 2px;
+  padding: 0px 10px;
+}
+
 .box-tech {
   position: absolute;
   top: -15px;

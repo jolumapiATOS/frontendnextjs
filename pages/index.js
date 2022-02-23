@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { socket }  from '../public/service.js';
+import UserID from '../components/UserID';
 
 
 
@@ -62,12 +63,14 @@ export default function Home() {
 
       { log === "known" && <div className="p-4">
           <section className='container-for-mobile'>
+
+            <UserID socket={ socket } />
             
-              <h3> NY Times | { info && info.results.length } </h3>
-              <div className='container-for-abstract'> 
-                { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
-                <h6 className='header-for-conatiner'>Abstract</h6>
-              </div>
+            <h3> NY Times | { info && info.results.length } </h3>
+            <div className='container-for-abstract'> 
+              { info && <p className='m-0'> {  info.results[1].abstract  } </p>  }
+              <h6 className='header-for-conatiner'>Abstract</h6>
+            </div>
 
             <div className='technical-container'>
               <h6 className='box-tech'>Technical Info</h6>

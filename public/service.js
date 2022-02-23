@@ -6,7 +6,7 @@ const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
 
 
 //Connection established
-socket.on("connect", () => {
+socket.on("connect", () => {    
     console.log("Succesfully connected to the socket");
     
 });
