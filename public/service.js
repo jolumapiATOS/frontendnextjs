@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 const { io } = require("socket.io-client");
-//const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
-const socket = io.connect("http://localhost:8000/");
+const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
+//const socket = io.connect("http://localhost:8000/");
 
 
 
