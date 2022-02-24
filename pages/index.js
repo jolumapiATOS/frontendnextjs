@@ -64,7 +64,7 @@ export default function Home() {
       { log === "known" && <div className="p-4">
           <section className='container-for-mobile'>
 
-            <UserID socket={ socket } />
+            <UserID />
             
             <h3> NY Times | { info && info.results.length } </h3>
             <div className='container-for-abstract'> 

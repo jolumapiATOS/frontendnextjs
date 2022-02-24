@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { socket } from '../public/service.js'
 
 
-const UserID = ({ socket }) => {
+const UserID = () => {
     const [name, setName] = useState('Loading...');
     const [id, setID] = useState()
     const [file, setFile] = useState();
@@ -19,7 +20,6 @@ const UserID = ({ socket }) => {
     }, [socket])
 
     function handleFile(e) {
-        setFileName(e.target.files[0].name)
         setFile(e.target.files[0])
     }
 
@@ -35,7 +35,6 @@ const UserID = ({ socket }) => {
                 fileName: file.name 
             };
             setFile();
-            setFileName('');
             socket.emit('photo', message)
         }
     }
@@ -45,8 +44,8 @@ const UserID = ({ socket }) => {
             <h1>Credentials</h1>
             <div className="users-container-for-id">
                 <h6 className="title-for-container-id">ID</h6>
-                <p className='name-of-the-user-credentials'><strong> User: </strong> { name }</p>
-                <p className='id-for-user-in-database'> <strong> ID: </strong>{ id }</p>
+                { name && <p className='name-of-the-user-credentials'><strong> User: </strong> { name }</p>}
+                { id && <p className='id-for-user-in-database'> <strong> ID: </strong>{ id }</p>}
                 { url && <img id='user-profile-image-for-everyone' src={url} alt="profile-image" srcSet='' /> }
                 { !url && <form onSubmit={handleSubmit}>
                     <input onChange={handleFile} type="file" />
