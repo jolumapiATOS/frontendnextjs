@@ -3,13 +3,18 @@ import { useState, useEffect } from 'react';
 
 const UserID = ({ socket }) => {
     const [name, setName] = useState('Loading...');
-    const [nameFile, setFileName] = useState('')
+    const [id, setID] = useState()
     const [file, setFile] = useState();
     const [url, setURL] = useState();
 
     useEffect(()=> {
         socket.on("username-credentials", (payload)=> {
             setName(payload)
+        })
+        socket.on("url-for-profile-image", (payload)=> {
+            let urlFromSocket = payload.url
+            setURL(urlFromSocket);
+            setID( payload.id );
         })
     }, [socket])
 
@@ -40,11 +45,13 @@ const UserID = ({ socket }) => {
             <h1>Credentials</h1>
             <div className="users-container-for-id">
                 <h6 className="title-for-container-id">ID</h6>
-                <p>{ name }</p>
-                <form onSubmit={handleSubmit}>
+                <p className='name-of-the-user-credentials'><strong> User: </strong> { name }</p>
+                <p className='id-for-user-in-database'> <strong> ID: </strong>{ id }</p>
+                { url && <img id='user-profile-image-for-everyone' src={url} alt="profile-image" srcSet='' /> }
+                { !url && <form onSubmit={handleSubmit}>
                     <input onChange={handleFile} type="file" />
                     <button>Send</button>
-                </form>
+                </form>}
             </div>
         </>
      );
