@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
 //WebSocket Connection
 import '../public/service.js';
-import { socket } from '../public/service.js';
 //Interval to send the data to the backend
 import { sendingDataToTheBackend } from '../public/serviceInterval.js'
 //IndexedDB database creation

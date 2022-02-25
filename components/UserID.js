@@ -3,7 +3,7 @@ import { socket } from '../public/service.js'
 
 
 const UserID = () => {
-    const [name, setName] = useState('Loading...');
+    const [name, setName] = useState();
     const [id, setID] = useState()
     const [file, setFile] = useState();
     const [url, setURL] = useState();
@@ -50,7 +50,7 @@ const UserID = () => {
                 { !url && <form onSubmit={handleSubmit}>
                     <input onChange={handleFile} type="file" />
                     <button>Send</button>
-                </form>}
+                </form> }
             </div>
         </>
      );
