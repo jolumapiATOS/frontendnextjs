@@ -41,11 +41,9 @@ const UserID = () => {
 
     return (
         <>
-            <h1>Credentials</h1>
-            <div className="users-container-for-id">
-                <h6 className="title-for-container-id">ID</h6>
+            <h1 className='text-center'>Welcome</h1>
+            <div className="users-container-for-id"> 
                 { name && <p className='name-of-the-user-credentials'><strong> User: </strong> { name }</p>}
-                { id && <p className='id-for-user-in-database'> <strong> ID: </strong>{ id }</p>}
                 { url && <img id='user-profile-image-for-everyone' src={url} alt="profile-image" srcSet='' /> }
                 { !url && <form onSubmit={handleSubmit}>
                     <input onChange={handleFile} type="file" />
