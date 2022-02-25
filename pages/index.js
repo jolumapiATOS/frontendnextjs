@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 import { socket }  from '../public/service.js';
 import UserID from '../components/UserID';
 
-
-
-
 export default function Home() {
   const [log, setLog] = useState('unknown');
   const [info, setInfo] = useState(null);

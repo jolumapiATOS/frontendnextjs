@@ -23,13 +23,6 @@ const CreateNewMessage = () => {
             const store = transaction.objectStore('messages');
             store.put({ message: messageUser, time: Date.now()})
         };
-        request.onupgradeneeded = function(event) {
-        // Save the IDBDatabase interface
-        const db = event.target.result;
-        // Create an objectStore for this database
-        const store = db.createObjectStore("messages", { autoIncrement : true });
-        };
-
     }
 
     return ( 

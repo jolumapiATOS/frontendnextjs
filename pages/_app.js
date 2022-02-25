@@ -11,12 +11,13 @@ import { sendingDataToTheBackend } from '../public/serviceInterval.js'
 import { databaseCreation } from '../public/database.js'
 //ServiceWorker Registration Process
 import { serviceWorkerRegistrationProcess } from '../public/serviceWorkerRegistration.js'
+//Exercise for a module
 
 
 function MyApp({ Component, pageProps }) {
 
   useEffect(()=>{
-
+    
     databaseCreation();
     sendingDataToTheBackend();
     serviceWorkerRegistrationProcess();

@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 const { io } = require("socket.io-client");
-const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
-//const socket = io.connect("http://localhost:8000/");
+//const socket = io.connect("https://node-server-for-upgrade.herokuapp.com/");
+const socket = io.connect("http://localhost:8000/");
 
 
 
@@ -18,28 +18,31 @@ socket.on('jwt', (payload) =>{
 
 socket.on('fetch-messages', (payload) => {
     (function AddMultiple () {
-        console.log("Activated from the function", payload)
-        let request = indexedDB.open("AtosDB", 1);
-        let db;
-        if(request){
-            request.onerror = function(event) {
-                console.log("Encounter an error inside the DB");
-              };
-            request.onsuccess = function(event) {
-                db = event.target.result
-                const transaction = db.transaction('messages', 'readwrite');
-                const store = transaction.objectStore('messages');
-                addMore(payload.messages, store)
-            };
-            function addMore(array, store) {
-                let requestOnData;
-                for(let i = 0; i < array.length; i ++ ) {
-                    requestOnData = store.put({ message: array[i].message, time: Date.now()})
+        let userCounter = localStorage.getItem('MessageCount');
+        let databaseCounter = payload.messages.length;
+        if(databaseCounter > userCounter) {
+            console.log("Activated from the function", payload)
+            let request = indexedDB.open("AtosDB", 1);
+            let db;
+            if(request){
+                request.onerror = function(event) {
+                    console.log("Encounter an error inside the DB");
+                };
+                request.onsuccess = function(event) {
+                    db = event.target.result
+                    const transaction = db.transaction('messages', 'readwrite');
+                    const store = transaction.objectStore('messages');
+                    addMore(payload.messages, store)
+                };
+                function addMore(array, store) {
+                    let requestOnData;
+                    for(let i = 0; i < array.length; i ++ ) {
+                        requestOnData = store.put({ message: array[i].message, time: Date.now()})
+                    }
                 }
-                // requestOnData.onsuccess = () => {
-                //     console.log("Successfully saved")
-                // }
-            }
+            } 
+        }  else {
+            console.log("User up to date")
         }
     }())
     

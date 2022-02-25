@@ -1,23 +1,15 @@
 import { socket } from './service.js';
-function sendingDataToTheBackend() {
-    setInterval(() => {
-        console.log("Trying to save the data")
-        if(navigator.onLine) {
-        const request = indexedDB.open('AtosDB', 1);
-        let db;
-            request.onsuccess = function(e){
-            console.log("Inside the archive")
-            db = e.target.result;
-            const transaction = db.transaction('messages', 'readwrite');
-            const store = transaction.objectStore('messages');
-            const query = store.getAll();
-            query.onsuccess = function() {
-                let messages = query.result;
-                socket.emit('bulk', {messages, user: localStorage.getItem("Auth")})
+    function sendingDataToTheBackend () {
+        setInterval(()=> {
+            const worker = new Worker('/intervalServiceToSendData.js');
+            worker.onmessage = (message) => {
+                let data = JSON.parse(message.data)
+                localStorage.setItem('MessageCount', data.length)
+                socket.emit('bulk', {counter: localStorage.getItem('MessageCount'), user: localStorage.getItem('Auth'), messages: data })
+                worker.terminate()
             }
-        }
-        }
-        }, 60000)
-}
+            worker.postMessage('Start working');
+        }, 10000)
+    }
 
 export { sendingDataToTheBackend }
