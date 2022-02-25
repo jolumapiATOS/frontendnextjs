@@ -1,11 +1,12 @@
 function databaseCreation () {
+    console.log("Triggered the creation of the database")
     const request = indexedDB.open("AtosDB", 1);
     request.onerror = function(event) {
         console.log("Encounter an error inside the DB", event);
     };
     request.onsuccess = function(event) {
         const db = event.target.result;
-        console.log("Successfully created the database", event)
+        console.log("Successfully created the database", event, db)
     };
     request.onupgradeneeded = function(event) {
     // Save the IDBDatabase interface
