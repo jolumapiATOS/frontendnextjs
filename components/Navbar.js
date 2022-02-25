@@ -53,6 +53,7 @@ const NavbarForApp = () => {
         clearDatabase();
         window.localStorage.removeItem('Auth');
         setAuth(null);
+        setTitle('Daily');
         router.push('/');
     }
 
