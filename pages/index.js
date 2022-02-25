@@ -4,9 +4,16 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { socket }  from '../public/service.js';
 import UserID from '../components/UserID';
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../components/redux/features/userSlice';
 
 export default function Home() {
-  const [log, setLog] = useState('unknown');
+  //redux
+  const user = useSelector( (state) => state.user.value );
+  const dispatch = useDispatch();
+
+  //react
   const [info, setInfo] = useState(null);
 
   useEffect( async () => {
@@ -19,15 +26,11 @@ export default function Home() {
       setInfo(data);
     })
 
-    socket.on('username', () => {
-      setLog("known")
-    })
-
     socket.on("disconnect", () => {
-      setLog("unknown") // false
+      dispatch( logout("unknown") );
   });
 
-  }, [socket])
+  }, [socket, user])
 
 
   return (
@@ -38,7 +41,7 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       
-      { log === "unknown" && <div className="p-4">
+      { user === "unknown" && <div className="p-4">
         <h1 className={styles.title}> UPgrade | Frontend </h1>
         <p>
             The purpose of this app is for you to give daily feedback on all of your
@@ -58,7 +61,7 @@ export default function Home() {
         </div>
       </div> }
 
-      { log === "known" && <div className="p-4">
+      { user !== "unknown" && <div className="p-4">
           <section className='container-for-mobile'>
 
             <UserID />

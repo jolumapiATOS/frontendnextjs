@@ -6,8 +6,15 @@ import styles from '../styles/Home.module.css'
 import { socket } from '../public/service.js'
 import { clearDatabase } from '../public/databaseService.js/deleteServiceDB.js'
 import { useRouter } from 'next/router'
+//Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { login, logout  } from './redux/features/userSlice.js'
 
 const NavbarForApp = () => {
+    //Redux
+    const user = useSelector( (state) => state.user.value );
+    const dispatch = useDispatch();
+    //React
     const router = useRouter();
     const [auth, setAuth] = useState(null);
     const [ teacher, setTeacher ] = useState(false);
@@ -18,7 +25,7 @@ const NavbarForApp = () => {
         
         socket.on('username', (payload) => {
             let firstname = payload.split(' ')[0]
-            setTitle(firstname);
+            dispatch( login(firstname) );
         })
 
         socket.on("connect", () => {
@@ -29,6 +36,7 @@ const NavbarForApp = () => {
         socket.on("disconnect", () => {
         setOnline("Offline");
         setTitle("Daily");
+        dispatch( login("Daily") );
         console.log("Succesfully disconnectedof the socket");
         })
         
@@ -53,7 +61,7 @@ const NavbarForApp = () => {
         clearDatabase();
         window.localStorage.removeItem('Auth');
         setAuth(null);
-        setTitle('Daily');
+        dispatch( logout("Daily") );
         router.push('/');
     }
 
@@ -61,7 +69,7 @@ const NavbarForApp = () => {
         <>
             <Navbar id="navbar-canvas-off-mine" expand={false}>
                 <Container fluid>
-                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | { title === 'Daily' ?  <strong id="daily-logo"> { title } 🤔 </strong> : <strong id="daily-logo"> { title } 😎 </strong> }    </Navbar.Brand>
+                    <Navbar.Brand id="navbar-logo-mine" href="/"> { online } | { user === 'unknown' ?  <strong id="daily-logo"> { user } 🤔 </strong> : <strong id="daily-logo"> { user } 😎 </strong> }    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" />
                     <Navbar.Offcanvas
                     aria-labelledby="offcanvasNavbarLabel"
