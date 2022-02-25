@@ -1,13 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "react-bootstrap";
-import { Navbar, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, Offcanvas } from "react-bootstrap";
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import { socket } from '../public/service.js'
 import { clearDatabase } from '../public/databaseService.js/deleteServiceDB.js'
+import { useRouter } from 'next/router'
 
 const NavbarForApp = () => {
+    const router = useRouter();
     const [auth, setAuth] = useState(null);
     const [ teacher, setTeacher ] = useState(false);
     const [ online, setOnline ] = useState("Connecting...");
@@ -52,7 +53,7 @@ const NavbarForApp = () => {
         clearDatabase();
         window.localStorage.removeItem('Auth');
         setAuth(null);
-        location.replace("/");
+        router.push('/');
     }
 
     return ( 
