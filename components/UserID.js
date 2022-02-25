@@ -9,7 +9,7 @@ const UserID = () => {
     const [url, setURL] = useState();
 
     useEffect(()=> {
-        socket.on("username-credentials", (payload)=> {
+        socket.on("credentials", (payload)=> {
             setName(payload)
         })
         socket.on("url-for-profile-image", (payload)=> {
